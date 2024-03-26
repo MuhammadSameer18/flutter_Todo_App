@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/screenview.dart';
+import 'package:todoapp/todoappscreen.dart';
 
 void main() {
-  runApp(const todoapp());
+  runApp(const TodoApp());
 }
 
-class todoapp extends StatelessWidget {
-  const todoapp({super.key});
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: screenview(),
+      title: "Todo App",
+      home: todoappscreen(),
     );
   }
 }
