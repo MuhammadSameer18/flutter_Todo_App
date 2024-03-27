@@ -23,16 +23,31 @@ class _todoappscreenState extends State<todoappscreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("TODO APP"),
+        title: Text(
+          "TODO APP",
+          style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
+        ),
       ),
       body: SafeArea(
           child: ListView.builder(
               itemCount: textlist.length,
               itemBuilder: (context, index) {
                 return Container(
-                  margin: EdgeInsets.only(top: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.white,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 5, color: Colors.black, spreadRadius: 2),
+                    ],
+                  ),
+                  margin: EdgeInsets.only(top: 10, left: 8, right: 8),
                   child: ListTile(
-                    tileColor: Colors.yellow,
+                    tileColor: Colors.white,
                     title: Text(textlist[index]),
                     trailing: Wrap(children: [
                       IconButton(
@@ -47,7 +62,8 @@ class _todoappscreenState extends State<todoappscreen> {
                                       controller: textupdatecontroller,
                                     ),
                                     actions: [
-                                      ElevatedButton(
+                                      Center(
+                                        child: ElevatedButton(
                                           onPressed: () {
                                             setState(() {
                                               textlist[index] =
@@ -56,7 +72,17 @@ class _todoappscreenState extends State<todoappscreen> {
                                             textupdatecontroller.clear();
                                             Navigator.pop(context);
                                           },
-                                          child: Text("Update"))
+                                          child: Text(
+                                            "Update",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue)),
+                                        ),
+                                      )
                                     ],
                                   );
                                 });
@@ -84,7 +110,8 @@ class _todoappscreenState extends State<todoappscreen> {
                     controller: textlistcontroller,
                   ),
                   actions: [
-                    ElevatedButton(
+                    Center(
+                      child: ElevatedButton(
                         onPressed: () {
                           setState(() {
                             textlist.add(textlistcontroller.text);
@@ -92,12 +119,23 @@ class _todoappscreenState extends State<todoappscreen> {
                           });
                           Navigator.pop(context);
                         },
-                        child: Text("Save"))
+                        child: Text(
+                          "Save",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.blue)),
+                      ),
+                    )
                   ],
                 );
               });
         },
-        child: Text("+"),
+        child: Text(
+          "+",
+          style: TextStyle(fontSize: 30),
+        ),
       ),
     );
   }
